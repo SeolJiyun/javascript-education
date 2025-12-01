@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>Soul Bank Reference Type Bug - updateProfile</title>
+  <link rel="stylesheet" href="../css/01-reference-type-bug-updateProfile.css" />
+</head>
+<body>
+
+  <div class="container">
+
+    <h1 class="title">Soul Bank</h1>
+
+    <hr class="divider-top" />
+
+    <p class="question">사용자 A, B의<br>원본 찾을 수 있나요?</p>
+
+    <hr class="divider-bottom" />
+
+    <div class="result-area">
+      <pre id="log"></pre>
+    </div>
+
+  </div>
+  
+
+  <script>
+    // console.log를 화면에도 출력되게 훅킹
+    const screenLog = document.getElementById("log");
+    const originalLog = console.log;
+
+    console.log = function (...args) {
+      originalLog(...args);
+      screenLog.textContent += args.join(" ") + "\n";
+    };
+  </script>
+
+  <script src="../js/01-reference-type-bug-updateProfile.js"></script>
+</body>
+</html>
